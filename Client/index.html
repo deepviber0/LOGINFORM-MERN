@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        *{
+            overflow:hidden;
+            
+        }
+        .container{
+            margin-left:20px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        .container {
+            
+            padding: 20px;
+            border-radius: 5px;
+           
+            width: 640px;
+            background-color: white;
+            
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            margin-left: 35px;background-color: transparent;
+
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            background-color: transparent;
+        }
+        .form-group input {
+            outline: none;
+            width: 70%;
+            padding: 8px;
+            border: none;
+            border-bottom: 3px solid  rgb(191, 183, 183);
+            background: none;
+            background-color: transparent;
+
+        }
+        .form-group button {
+            width: 40%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 53px;
+            margin-top: 19px;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+            
+        }
+        img{
+            
+            
+            margin-top: 35px;
+            height:320px;
+            margin-bottom: 20px;
+        }
+        h2{
+            background-color: transparent;
+
+        }
+        #heading{
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+        }
+        @media (min-width: 555px) {
+            img{
+                width:290px;
+                float: right;
+                margin-top: 35px;
+                height:320px;
+                margin-bottom: 20px;
+            }
+            *{
+                background-color: #fff;
+            }
+            input{
+                background-color: transparent;
+            }
+            .container {
+            
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 640px;
+               
+            }
+            .form-group{
+                background-color: transparent;
+            }
+            label{
+                font-weight: 600;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+            }
+            #heading{
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+            }
+
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h2 id="heading">Faculty Login</h2>
+        <img src="loginanime.avif" alt="img">
+        <form id="loginForm" method="POST">
+            <div class="form-group">
+                <br><br><br>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="uname" placeholder="Example" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="pass" placeholder="*" required>
+            </div>
+           
+            <div class="form-group">
+                <button type="submit" id="submit">Login</button>
+            </div>
+        </form>
+
+     </div>
+
+     <script>
+        document.getElementById("loginForm").addEventListener("submit", async (event) => {
+            event.preventDefault(); // Prevent page reload
+        
+            const user = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
+        
+            try {
+                const response = await fetch("http://localhost:4000/post", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ Username: user, Password: pass })
+                });
+        
+                const data = await response.json();
+        
+                if (response.ok) {
+                    console.log("User Created Successfully:", data);
+                    alert("User registered successfully!");
+                } else {
+                    console.error("Error:", data);
+                    alert("Failed to register user!");
+                }
+            } catch (err) {
+                console.error("Request Failed:", err);
+                alert("Something went wrong. Try again!");
+            }
+        });
+        
+     </script>
+</body>
+</html>

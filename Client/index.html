@@ -7,13 +7,13 @@
     <style>
         .loader {
         display: none;
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         border: 3px solid #fff;
         border-top: 3px solid transparent;
         border-radius: 50%;
         animation: spin 0.8s linear infinite;
-        margin-left: 10px;
+        margin-left: 8px;
     }
 
     @keyframes spin {
@@ -153,7 +153,7 @@
            
             <div class="form-group">
                 <button type="submit" id="submit">Login</button>
-                 <span class="loader" id="loader"></span>
+                 <span class="loader" id="loaders"></span>
             </div>
         </form>
 
@@ -165,7 +165,7 @@
         
             const user = document.getElementById("username").value;
             const pass = document.getElementById("password").value;
-            const loader = document.getElementById("loader");
+            const loader = document.getElementById("loaders");
         const submitBtn = document.getElementById("submit");
 
          loader.style.display = "inline-block";

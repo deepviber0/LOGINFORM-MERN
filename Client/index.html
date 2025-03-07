@@ -162,7 +162,9 @@
                 const data = await response.json();
         
                 if (response.ok) {
-                    console.log("User Created Successfully:", data);
+                    user.value="";
+                    pass.value="";
+                   // console.log("User Created Successfully:", data);
                     alert("User registered successfully!");
                 } else {
                     console.error("Error:", data);

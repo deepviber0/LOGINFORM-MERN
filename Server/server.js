@@ -24,7 +24,7 @@ const schema = new mongoose.Schema({
 
 const Testing = mongoose.model("Testing", schema);
 
-app.post("/post", async (req, res) => {
+app.post("/login", async (req, res) => {
   try {
     const { Username, Password } = req.body;
 

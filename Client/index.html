@@ -7,14 +7,13 @@
     <style>
         .loader {
         display: none;
-                width: 26px;
-                height: 26px;
-                border: 3px solid #fff;
-                border-top: 3px solid blue;
+                width: 16px;
+                height: 16px;
+                border: 3px solid blue;
+                border-top: 3px solid rgb(160, 160, 168);
                 border-radius: 50%;
                 animation: spin 0.8s linear infinite;
                 margin-left: 8px;
-                margin-bottom: 20px;
     }
 
     @keyframes spin {
@@ -188,6 +187,8 @@
                 if (response.ok) {
                 document.getElementById("username").value = "";
                 document.getElementById("password").value = "";
+                     loader.style.display = "none";
+        submitBtn.disabled = false;
                 alert("Login successful!");
             } else {
                     console.error("Error:", data);
